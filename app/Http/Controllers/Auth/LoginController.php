@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -44,7 +45,15 @@ class LoginController extends Controller
     public function findUsername(){
         $login = request()->input('login');
 
-        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $user = User::where('username', $login)->first();
+
+        if($user){
+            $fieldType = 'username';
+        }else{
+            $fieldType = 'nip';
+        }
+
+        // $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
         request()->merge([$fieldType => $login]);
 
