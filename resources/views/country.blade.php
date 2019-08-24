@@ -64,7 +64,7 @@
 		Jumlah Data : {{ $country->total() }} <br/>
 		Data Per Halaman : {{ $country->perPage() }} <br/>
 
-		{{ $country->links() }}
+		{{ $country->onEachSide(2)->links() }}
 	</div>
 
 </body>

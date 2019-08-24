@@ -11,7 +11,7 @@ class CountryController extends Controller
 {
     public function index(){
     	// $country = Country::take(20)->get();
-        $country = Country::paginate(100);
+        $country = Country::paginate(25);
     	return view('country',compact('country'));
     }
 
@@ -27,7 +27,7 @@ class CountryController extends Controller
         $search = $request->get('search');
         $country = Country::where('HeadOfState','like', '%' .$search. '%')
                     ->orWhere('name','like', '%' .$search. '%')
-                    ->paginate(100);
+                    ->paginate(25);
 
         return view('country', ['country'=>$country]);
     }
