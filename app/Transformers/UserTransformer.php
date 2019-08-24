@@ -3,6 +3,7 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
+use App\User;
 
 class UserTransformer extends TransformerAbstract
 {
@@ -11,10 +12,12 @@ class UserTransformer extends TransformerAbstract
      *
      * @return array
      */
-    public function transform()
+    public function transform(User $user)
     {
         return [
-            //
+            'name'       => $user->name,
+            'email'      => $user->email,
+            'registered' => $user->created_at->diffForHumans()
         ];
     }
 }
