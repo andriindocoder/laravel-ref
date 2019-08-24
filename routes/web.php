@@ -20,3 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/change-password', 'HomeController@showChangePasswordForm');
 Route::post('/change-password', 'HomeController@changePassword')->name('change-password');
+
+Route::get('/country','CountryController@index');
+Route::get('/country/print_pdf', 'CountryController@print_pdf');
