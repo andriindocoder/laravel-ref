@@ -10,11 +10,30 @@
 	<div class="container">
 		<br>
 		<center>
-			<h4>Laravel PDF Example</h4>
+			<h4>Laravel Reference</h4>
 		</center>
 		<br/>
-		<a href="/country/print_pdf" class="btn btn-success" target="_blank">PRINT PDF</a>
-		<br><br>
+		
+
+		<div class="row">
+			<div class="col-md-6">
+				<h4>Countries</h4>
+			</div>
+			<div class="col-md-4">
+				<form action="/search" method="get">
+					<div class="input-group">
+						<input type="search" class="form-control" name="search" placeholder="Search Country Name or Head of State">
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="submit">Search</button>
+						</span>
+					</div><!-- /input-group -->
+				</form>
+			</div>
+			<div class="col-md-2 text-right">
+				<a href="/country/print_pdf" class="btn btn-success" target="_blank">PRINT PDF</a>
+			</div>	
+		</div>
+		<br>
 		<table class='table table-bordered'>
 			<thead>
 				<tr>

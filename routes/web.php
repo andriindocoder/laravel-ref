@@ -18,9 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/change-password', 'HomeController@showChangePasswordForm');
-Route::post('/change-password', 'HomeController@changePassword')->name('change-password');
 
-Route::get('/country','CountryController@index');
+Route::get('/change-password','HomeController@showChangePasswordForm');
+Route::post('/change-password','HomeController@changePassword')->name('change-password');
+
+Route::get('/country', 'CountryController@index');
 Route::get('/country/print_pdf', 'CountryController@print_pdf');
+
 Route::get('/send/email', 'EmailController@send');
+
+//Search
+Route::get('/search','CountryController@search');
