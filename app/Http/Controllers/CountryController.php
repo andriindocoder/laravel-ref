@@ -10,7 +10,8 @@ use DB;
 class CountryController extends Controller
 {
     public function index(){
-    	$country = Country::take(20)->get();
+    	// $country = Country::take(20)->get();
+        $country = Country::paginate(100);
     	return view('country',compact('country'));
     }
 
@@ -24,10 +25,9 @@ class CountryController extends Controller
 
     public function search(Request $request){
         $search = $request->get('search');
-        $country = DB::table('country')
-                    ->where('HeadOfState','like', '%' .$search. '%')
+        $country = Country::where('HeadOfState','like', '%' .$search. '%')
                     ->orWhere('name','like', '%' .$search. '%')
-                    ->get();
+                    ->paginate(100);
 
         return view('country', ['country'=>$country]);
     }

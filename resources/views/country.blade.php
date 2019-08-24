@@ -46,10 +46,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				@php $i=1 @endphp
-				@foreach($country as $c)
+				@foreach($country as $key => $c)
 				<tr>
-					<td>{{ $i++ }}</td>
+					<td>{{ $key + $country->firstItem() }}</td>
 					<td>{{$c->Code}}</td>
 					<td>{{$c->Name}}</td>
 					<td>{{$c->Continent}}</td>
@@ -59,6 +58,13 @@
 				@endforeach
 			</tbody>
 		</table>
+
+		<br/>
+		Halaman : {{ $country->currentPage() }} <br/>
+		Jumlah Data : {{ $country->total() }} <br/>
+		Data Per Halaman : {{ $country->perPage() }} <br/>
+
+		{{ $country->links() }}
 	</div>
 
 </body>
