@@ -23,3 +23,4 @@ Route::post('/change-password', 'HomeController@changePassword')->name('change-p
 
 Route::get('/country','CountryController@index');
 Route::get('/country/print_pdf', 'CountryController@print_pdf');
+Route::get('/send/email', 'EmailController@send');
