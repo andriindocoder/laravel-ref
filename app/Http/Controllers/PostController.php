@@ -26,4 +26,16 @@ class PostController extends Controller
 
     	return response()->json($response, 201);
     }
+
+    public function update(Request $request, Post $post){
+    	$post->content = $request->get('content', $post->content);
+    	$post->save();
+
+    	$response = fractal()
+    		->item($post)
+    		->transformWith(new PostTransformer)
+    		->toArray();
+
+    	return response()->json($response,200);
+    }
 }
