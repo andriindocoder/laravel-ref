@@ -21,7 +21,7 @@ class ArticleController extends Controller
 
     public function store(StoreArticleRequest $request){
 		$article            = new Article();
-		$article->author_id = $request->author->id;
+		$article->author_id = $request->user()->id;
 		$article->title     = $request->title;
 		$article->slug      = str_slug($request->title);
 		$article->body      = $request->body;
