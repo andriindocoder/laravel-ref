@@ -19,3 +19,4 @@ Route::post('auth/login','AuthController@login');
 Route::get('users/profile','UserController@profile')->middleware('auth:api');
 Route::get('users/{id}','UserController@profileById')->middleware('auth:api');
 Route::post('post','PostController@add')->middleware('auth:api');
+Route::put('post/{post}','PostController@update')->middleware('auth:api');
