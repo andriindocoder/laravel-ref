@@ -27,7 +27,7 @@ class UserTransformer extends TransformerAbstract
     }
 
     public function includePosts(User $user){
-        $posts = $user->posts;
+        $posts = $user->posts()->latestFirst()->get();
 
         return $this->collection($posts, new PostTransformer);
     }
