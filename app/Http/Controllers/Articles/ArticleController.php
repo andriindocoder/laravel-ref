@@ -8,6 +8,7 @@ use App\Article;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use App\Http\Requests\Articles\StoreArticleRequest;
 use App\Http\Requests\Articles\UpdateArticleRequest;
+use App\Transformers\ArticleTransformer;
 
 class ArticleController extends Controller
 {
