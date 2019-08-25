@@ -23,4 +23,8 @@ class PostPolicy
     public function update(User $user, Post $post){
         return $user->ownsPost($post);
     }
+
+    public function delete(User $user, Post $post){
+        return $user->ownsPost($post);
+    }
 }
