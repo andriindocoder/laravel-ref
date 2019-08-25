@@ -39,10 +39,16 @@ class ArticleController extends Controller
 		$article->title = $request->get('title', $article->title);
 		$article->slug = ($request->has('title')) ? str_slug($request->get('title')) : $article->slug;
 		$article->body = $request->get('body', $article->body);
-		
+
 		$article->save();
 
     	return Fractal::includes('author')
     		->item($article, new ArticleTransformer);
     } 
+
+    public function destroy(Article $article){
+    	$article->delete();
+
+    	return $response(null, 200);
+    }
 }
