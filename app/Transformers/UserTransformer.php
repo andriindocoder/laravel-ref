@@ -7,6 +7,8 @@ use League\Fractal\TransformerAbstract;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 
+use App\User;
+
 
 class UserTransformer extends TransformerAbstract
 {
@@ -15,7 +17,7 @@ class UserTransformer extends TransformerAbstract
      *
      * @var array
      */
-    protected $availableIncludes = [];
+    protected $availableIncludes = ['articles'];
 
     /**
      * List of resources to automatically include
@@ -30,11 +32,13 @@ class UserTransformer extends TransformerAbstract
      * @var $resource
      * @return array
      */
-    public function transform($resource)
+    public function transform(User $user)
     {
         return [
 
-            'id' => $resource->id,
+            'id'    => $user->id,
+            'name'  => $user->name,
+            'email' => $user->email,
 			
         ];
     }
