@@ -58,6 +58,15 @@ class Handler extends ExceptionHandler
                     'error' => 'Not Found'
                 ], 404);
             }
+
+            if($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException){
+                // $exception->getModel();
+                $modelClass = explode('\\',$exception->getModel());
+                // dd(end($modelClass));
+                return response()->json([
+                    'error' => end($modelClass) . ' Not Found'
+                ], 404);
+            }
         }
         return parent::render($request, $exception);
     }
