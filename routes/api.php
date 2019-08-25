@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/register',['as' => 'register', 'uses' => 'RegisterController@index']);
+
 Route::group(['namespace' => 'Articles', 'prefix' => '/articles'], function(){
 	Route::get('/', ['as' => 'articles', 'uses' => 'ArticleController@index']);
 	Route::get('/{article}', ['as' => 'articles.show', 'uses' => 'ArticleController@show']);
