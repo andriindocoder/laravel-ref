@@ -58,7 +58,7 @@ class AjaxdataController extends Controller
 
             if($request->get('button_action') == 'update')
             {
-                $student = User::find($request->get('student_id'));
+                $student = User::find($request->get('id'));
                 $student->name = $request->get('name');
                 $student->email = $request->get('email');
                 $student->save();
