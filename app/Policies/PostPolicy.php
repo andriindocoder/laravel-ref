@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Post;
 
 class PostPolicy
 {
@@ -17,5 +18,9 @@ class PostPolicy
     public function __construct()
     {
         //
+    }
+
+    public function update(User $user, Post $post){
+        return $user->ownsPost($post);
     }
 }
