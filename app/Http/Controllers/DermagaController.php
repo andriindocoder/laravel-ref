@@ -11,9 +11,10 @@ class DermagaController extends Controller
     public function index(){
     	// $dermagas = DB::table('m_dermaga')->get();
     	// $dermaga = DB::table('m_dermaga')->where('kode_pelabuhan','IDJKT')->first();
-    	$dermaga = DB::table('m_dermaga')->where('kode_pelabuhan','IDJKT')->value('nama_pelabuhan');
+    	// $dermaga = DB::table('m_dermaga')->where('kode_pelabuhan','IDJKT')->value('nama_pelabuhan');
+    	$dermagas = DB::table('m_dermaga')->pluck('kode_pelabuhan');
     	echo "<pre>";
-    	print_r($dermaga);
+    	print_r($dermagas);
     	echo "</pre>";
     	die();
     }	
