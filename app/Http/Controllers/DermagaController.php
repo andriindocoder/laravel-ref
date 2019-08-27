@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\DB;
 class DermagaController extends Controller
 {
     public function index(){
-    	$dermagas = DB::table('m_dermaga')->get();
+    	// $dermagas = DB::table('m_dermaga')->get();
+    	$dermaga = DB::table('m_dermaga')->where('kode_pelabuhan','IDJKT')->first();
     	echo "<pre>";
-    	print_r($dermagas);
+    	print_r($dermaga);
     	echo "</pre>";
     	die();
     }	
