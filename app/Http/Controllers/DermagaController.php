@@ -25,10 +25,9 @@ class DermagaController extends Controller
     	// echo $jumlahRecord;
     	// $terpanjang = DB::table('m_dermaga')->max('panjang');
     	// echo $terpanjang;
-    	$rerataPanjangKapalDiPriok = 
-    		DB::table('m_dermaga')
-				->where('kode_pelabuhan','IDJKT')
-				->avg('panjang');
-    	echo $rerataPanjangKapalDiPriok;
+    	$exists = DB::table('m_dermaga')
+					->where('kode_pelabuhan','IDJKT')
+					->exists();
+    	echo $exists;
     }	
 }
