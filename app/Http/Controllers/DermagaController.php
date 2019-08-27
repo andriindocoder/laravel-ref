@@ -27,7 +27,7 @@ class DermagaController extends Controller
     	// echo $terpanjang;
     	$exists = DB::table('m_dermaga')
 					->where('kode_pelabuhan','IDJKT')
-					->exists();
+					->doesntExist();
     	echo $exists;
     }	
 }
