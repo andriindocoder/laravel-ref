@@ -21,7 +21,9 @@ class DermagaController extends Controller
     	// 				->update(['jenis_perairan' => 'NAMABARU']);
     	// 		}
     	// });
-    	$jumlahRecord = DB::table('m_dermaga')->count();
-    	echo $jumlahRecord;
+    	// $jumlahRecord = DB::table('m_dermaga')->count();
+    	// echo $jumlahRecord;
+    	$terpanjang = DB::table('m_dermaga')->max('panjang');
+    	echo $terpanjang;
     }	
 }
