@@ -25,9 +25,9 @@ class DermagaController extends Controller
     	// echo $jumlahRecord;
     	// $terpanjang = DB::table('m_dermaga')->max('panjang');
     	// echo $terpanjang;
-    	$dermagas = DB::table('m_dermaga')
-    				->distinct()
-    				->get();
+    	$query = DB::table('m_dermaga')->select('kode_pelabuhan');
+
+    	$dermagas = $query->addSelect('nama_pelabuhan')->get();
     	echo "<pre>";
     	print_r($dermagas);
     	echo "</pre>";
