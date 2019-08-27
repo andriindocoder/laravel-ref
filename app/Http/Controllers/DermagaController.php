@@ -13,11 +13,13 @@ class DermagaController extends Controller
     	// $dermaga = DB::table('m_dermaga')->where('kode_pelabuhan','IDJKT')->first();
     	// $dermaga = DB::table('m_dermaga')->where('kode_pelabuhan','IDJKT')->value('nama_pelabuhan');
     	// $dermagas = DB::table('m_dermaga')->pluck('nama_dermaga','kode_dermaga');
-    	DB::table('m_dermaga')->orderBy('id')->chunk(20, function($dermagas){
-	    	echo "<pre>";
-	    	print_r($dermagas);
-	    	echo "</pre>";
-	    	die();
+    	DB::table('m_dermaga')->where('jenis_perairan','DALEM')
+    		->chunkById(100, function($dermagas){
+    			foreach($dermagas as $dermaga){
+    				DB::table('m_dermaga')
+    					->where('jenis_perairan','DALEM')
+    					->update(['jenis_perairan' => 'NAMABARU']);
+    			}
     	});
     }	
 }
