@@ -39,3 +39,5 @@ Route::post('ajaxdata/postdata', 'AjaxdataController@postdata')->name('ajaxdata.
 Route::get('ajaxdata/fetchdata', 'AjaxdataController@fetchdata')->name('ajaxdata.fetchdata');
 Route::get('ajaxdata/removedata', 'AjaxdataController@removedata')->name('ajaxdata.removedata');
 Route::get('ajaxdata/massremove', 'AjaxdataController@massremove')->name('ajaxdata.massremove');
+
+Route::get('/dermaga','DermagaController@index');
