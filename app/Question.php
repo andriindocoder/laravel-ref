@@ -34,7 +34,8 @@ class Question extends Model
 
     public function getCreatedDateAttribute()
     {
-        return $this->created_at->diffForHumans();
+        // return $this->created_at->diffForHumans();
+        return $this->created_at;
     }
 
     public function getStatusAttribute()
@@ -92,7 +93,8 @@ class Question extends Model
 
     public function excerpt($length)
     {
-        return str_limit(strip_tags($this->bodyHtml()), $length);
+        return strip_tags($this->bodyHtml(), $length);
+        // return str_limit(strip_tags($this->bodyHtml()), $length);
     }
 
     private function bodyHtml()
