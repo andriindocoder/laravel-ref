@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Question;
 use Illuminate\Http\Request;
+use App\Http\Resources\QuestionsResource;
 
 class QuestionsController extends Controller
 {
@@ -17,7 +18,7 @@ class QuestionsController extends Controller
     {
         $questions = Question::with('user')->latest()->paginate(10);
 
-        return $questions;
+        return QuestionsResource::collection($questions);
     }
 
     /**
