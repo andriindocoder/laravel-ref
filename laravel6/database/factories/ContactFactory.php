@@ -13,6 +13,6 @@ $factory->define(Contact::class, function (Faker $faker) {
         'phone' => $faker->phoneNumber,
         'email' => $faker->email,
         'address' => $faker->address,
-        'company_id' => Company::pluck('id')->random()
+        // 'company_id' => Company::pluck('id')->random()
     ];
 });
