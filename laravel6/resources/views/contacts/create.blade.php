@@ -62,9 +62,9 @@
                   </div>
                   <hr>
                   <div class="form-group row mb-0">
-                    <div class="col-md-9 offset-md-3">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <a href="{{ route('contacts.index') }}" class="btn btn-outline-secondary">Cancel</a>
+                    <div class="col-md-12 text-right">
+                        <button type="submit" class="btn btn-success"><span><i class="fa fa-save"></i> Save</span></button>
+                        <a href="{{ route('contacts.index') }}" class="btn btn-outline-secondary"><span><i class="fa fa-refresh"></i> Cancel</span></a>
                     </div>
                   </div>
                 </div>

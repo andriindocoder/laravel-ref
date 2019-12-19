@@ -35,7 +35,7 @@
                     <td>Alfred</td>
                     <td>Kuhlman</td>
                     <td>alfred@test.com</td>
-                    <td>Company one</td>
+                    <td>Company One</td>
                     <td width="150">
                       <a href="show.html" class="btn btn-sm btn-circle btn-outline-info" title="Show"><i class="fa fa-eye"></i></a>
                       <a href="form.html" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
@@ -47,7 +47,7 @@
                     <td>Frederick</td>
                     <td>Jerde</td>
                     <td>frederick@test.com</td>
-                    <td>Company one</td>
+                    <td>Company One</td>
                     <td>
                       <a href="show.html" class="btn btn-sm btn-circle btn-outline-info" title="Show"><i class="fa fa-eye"></i></a>
                       <a href="form.html" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
@@ -92,6 +92,9 @@
                   </tr>
                 </tbody>
               </table> 
+
+              <?php foreach($afa as $a): ?>
+              <?php endforeach;?>
 
               <nav class="mt-4">
                   <ul class="pagination justify-content-center">
