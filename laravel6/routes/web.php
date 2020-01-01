@@ -28,3 +28,12 @@ Route::put('/contacts/{id}', 'ContactController@update')->name('contacts.update'
 Route::get('/contacts/{id}/edit', 'ContactController@edit')->name('contacts.edit');
 
 Route::delete('/contacts/{id}', 'ContactController@destroy')->name('contacts.destroy');
+
+/** LARAVEL BLOG **/
+Route::get('/blog', function () {
+    return view('blog.index');
+});
+
+Route::get('/blog/show', function () {
+    return view('blog.show');
+});

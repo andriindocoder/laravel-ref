@@ -22,3 +22,4 @@ Homestead.json
 storage/framework
 storage/logs
 bootstrap/cache
+.DS_Store
