@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Company;
-use App\Contact;
+// use App\Company;
+// use App\Contact;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,10 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(Company::class, 10)->create()->each(function ($company) {
-        	$company->contacts()->saveMany(
-		        factory(Contact::class, rand(5, 10))->make()
-        	);
-        });
+        // factory(Company::class, 10)->create()->each(function ($company) {
+        // 	$company->contacts()->saveMany(
+		      //   factory(Contact::class, rand(5, 10))->make()
+        // 	);
+        // });
+        $this->call(UsersTableSeeder::class);
+        $this->call(PostsTableSeeder::class);
     }
 }
