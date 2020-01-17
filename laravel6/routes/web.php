@@ -37,3 +37,6 @@ Route::get('/blog', function () {
 Route::get('/blog/show', function () {
     return view('blog.show');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
