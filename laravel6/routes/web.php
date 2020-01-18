@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'verified')->group(function () {
 	Route::get('/contacts', 'ContactController@index')->name('contacts.index');
 
 	Route::post('/contacts', 'ContactController@store')->name('contacts.store');
@@ -40,7 +40,7 @@ Route::get('/blog', function () {
 Route::get('/blog/show', function () {
     return view('blog.show');
 });
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
