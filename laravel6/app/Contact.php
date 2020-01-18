@@ -22,4 +22,8 @@ class Contact extends Model
     public function scopeLatestFirst($query) {
     	return $query->orderBy('id', 'desc');
     }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
