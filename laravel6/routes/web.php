@@ -31,6 +31,8 @@ Route::middleware('auth', 'verified')->group(function () {
 	Route::delete('/contacts/{id}', 'ContactController@destroy')->name('contacts.destroy');
 });
 
+Route::get('/settings/account', 'Settings\AccountController@index');
+
 
 /** LARAVEL BLOG **/
 Route::get('/blog', function () {
