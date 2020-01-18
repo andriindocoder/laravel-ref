@@ -9,7 +9,7 @@ class Contact extends Model
 {
     use FilterSearchScope;
 
-    protected $fillable = ['first_name', 'last_name', 'email', 'phone', 'address', 'company_id'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'phone', 'address', 'company_id', 'user_id'];
 
     public $filterColumns = ['company_id'];
     public $searchColumns = ['first_name', 'last_name', 'email'];
