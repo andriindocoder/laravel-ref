@@ -29,6 +29,15 @@ Route::middleware('auth', 'verified')->group(function () {
 	// Route::get('/contacts/{contact}/edit', 'ContactController@edit')->name('contacts.edit');
 
 	// Route::delete('/contacts/{contact}', 'ContactController@destroy')->name('contacts.destroy');
+	// Route::resource('/contacts','ContactController');
+	// Route::resource('/contacts','ContactController')->names([
+	// 	'index' => 'contacts.all',
+	// 	'show' => 'contacts.view'
+	// ]);
+	// Route::resource('/contacts','ContactController')->parameters([
+	// 	'contacts' => 'kontak'
+	// ]);
+	// Route::resource('/companies.contacts', 'ContactController');
 	// Route::resource('contacts', 'ContactController')->only(['create', 'store', 'edit', 'update', 'destroy']);
 	// Route::resource('contacts', 'ContactController')->except(['create', 'store', 'edit', 'update', 'destroy']);
 	Route::resources([
