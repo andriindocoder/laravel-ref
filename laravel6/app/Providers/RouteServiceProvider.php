@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use App\Contact;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -31,7 +32,14 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Route::model('contact', Contact::class);
+        // Route::bind('contact', function($value) {
+        //     return Contact::where('first_name', $value)->firstOrFail();
+        // });
+
+        // Route::bind('contact', function($value) {
+        //     return Contact::where('slug', $value)->where('published_at','<=',now())->firstOrFail();
+        // });
 
         parent::boot();
     }
