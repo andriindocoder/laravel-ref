@@ -13,6 +13,8 @@ class ContactRequest extends FormRequest
      */
     public function authorize()
     {
+        // dd($this->route('contact'));
+        // dd($this->method());
         return true;
     }
 
@@ -29,6 +31,22 @@ class ContactRequest extends FormRequest
             'email' => 'required|email',
             'address' => 'required',
             'company_id' => 'required|exists:companies,id',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'company_id' => 'company',
+            'email' => 'email address'
+        ];
+    }
+
+    public function messages() {
+        return [
+            'email.email' => "The email that you entered is not valid",
+            'first_name.required' => "First name can not be empty",
+            'email.required' => "Email field can not be empty"
+            '*.required' => ":attribute field can not be empty"
         ];
     }
 }
