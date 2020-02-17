@@ -27,7 +27,7 @@ class Post extends Model
 		return $this->created_at->diffForHumans();
 	}
 
-	public function scopeLatestFirst() {
+	public function scopeLatestFirst($query) {
 		return $query->orderBy('created_at', 'desc');
 	}
 }
