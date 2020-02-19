@@ -51,7 +51,8 @@ Route::get('/settings/account', 'Settings\AccountController@index');
 
 /** LARAVEL BLOG **/
 Route::get('/blog', [
-	'uses' => 'BlogController@index'
+	'uses' => 'BlogController@index',
+	'as' => 'blog'
 ]);
 
 Route::get('/blog/show', function () {
