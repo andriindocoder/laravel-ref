@@ -48,6 +48,10 @@ Route::middleware('auth', 'verified')->group(function () {
 
 Route::get('/settings/account', 'Settings\AccountController@index');
 
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 /** LARAVEL BLOG **/
 Route::get('/blog', [
@@ -55,10 +59,8 @@ Route::get('/blog', [
 	'as' => 'blog'
 ]);
 
-Route::get('/blog/show', function () {
-    return view('blog.show');
-});
-Auth::routes(['verify' => true]);
+Route::get('/blog/{post}', [
+	'uses' => 'BlogController@show',
+	'as' => 'blog.show'
+]);
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
