@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use App\Contact;
+use App\Post;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -40,6 +41,10 @@ class RouteServiceProvider extends ServiceProvider
         // Route::bind('contact', function($value) {
         //     return Contact::where('slug', $value)->where('published_at','<=',now())->firstOrFail();
         // });
+
+        Route::bind('post', function($slug) {
+            return Post::published()->where('slug', $slug)->first();
+        });
 
         parent::boot();
     }
