@@ -64,3 +64,8 @@ Route::get('/blog/{post}', [
 	'as' => 'blog.show'
 ]);
 
+Route::get('/blog/category/{category}', [
+	'uses' => 'BlogController@category',
+	'as' => 'category'
+]);
+
