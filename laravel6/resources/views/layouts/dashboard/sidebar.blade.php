@@ -26,23 +26,23 @@
              with font-awesome or any other icon font library -->
         <li class="nav-item has-treeview menu-open">
           <a href="#" class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fa fa-pencil-alt"></i>
             <p>
-              Starter Pages
+              Blog
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link active">
+              <a href="{{ route('backend.blog.index') }}" class="nav-link active">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Active Page</p>
+                <p>All Posts</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('backend.blog.create') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Inactive Page</p>
+                <p>Create Post</p>
               </a>
             </li>
           </ul>
