@@ -48,10 +48,10 @@ Route::middleware('auth', 'verified')->group(function () {
 
 Route::get('/settings/account', 'Settings\AccountController@index');
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true, 'register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'Backend\HomeController@index')->name('dashboard');
 
 /** LARAVEL BLOG **/
 Route::get('/blog', [
