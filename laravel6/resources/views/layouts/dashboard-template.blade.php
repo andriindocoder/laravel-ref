@@ -22,5 +22,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 <!-- ./wrapper -->
 @include('layouts.dashboard.script')
+@yield('script')
 </body>
 </html>

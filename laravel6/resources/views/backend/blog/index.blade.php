@@ -11,8 +11,8 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Blog</a></li>
-            <li class="breadcrumb-item active">Display All Posts</li>
+            <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="{{ route('backend.blog.index') }}">All Posts</a></li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -28,52 +28,60 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Blog List</h3>
+              <div class="float-right">
+                <a href="{{ route('backend.blog.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i> Add New</a>
+              </div>
             </div>
             <!-- /.card-header -->
-            <div class="card-body p-0">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th width="15%">Action</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Category</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                	@foreach($posts as $post)
-	                  <tr>
-	                    <td>
-	                    	<a href="{{ route('backend.blog.edit', $post->id) }}" class="btn btn-sm btn-primary">
-	                    		<i class="fa fa-pencil-alt"></i>
-	                    	</a>
-	                    	<a href="{{ route('backend.blog.destroy', $post->id) }}" class="btn btn-sm btn-danger">
-	                    		<i class="fa fa-times"></i>
-	                    	</a>
-	                    </td>
-	                    <td>{{ $post->title }}</td>
-	                    <td>{{ $post->author->name }}</td>
-	                    <td>{{ $post->category->title }}</td>
-	                    <td>
-                        <abbr title="{{ $post->dateFormatted(true) }}">{{ $post->dateFormatted() }}</abbr>
-                        {!! $post->publicationLabel() !!}
-                      </td>
-	                  </tr>
-                  	@endforeach
-                </tbody>
-              </table>
+            @if(!$posts->count())
+            <div class="alert alert-danger" style="margin: 10px 15px;">
+              No Record Found
             </div>
+            @else
+              <div class="card-body p-0">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th width="15%">Action</th>
+                      <th>Title</th>
+                      <th>Author</th>
+                      <th>Category</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($posts as $post)
+                      <tr>
+                        <td>
+                          <a href="{{ route('backend.blog.edit', $post->id) }}" class="btn btn-sm btn-primary">
+                            <i class="fa fa-pencil-alt"></i>
+                          </a>
+                          <a href="{{ route('backend.blog.destroy', $post->id) }}" class="btn btn-sm btn-danger">
+                            <i class="fa fa-times"></i>
+                          </a>
+                        </td>
+                        <td>{{ $post->title }}</td>
+                        <td>{{ $post->author->name }}</td>
+                        <td>{{ $post->category->title }}</td>
+                        <td>
+                          <abbr title="{{ $post->dateFormatted(true) }}">{{ $post->dateFormatted() }}</abbr>
+                          {!! $post->publicationLabel() !!}
+                        </td>
+                      </tr>
+                      @endforeach
+                  </tbody>
+                </table>
+              </div>
             <!-- /.card-body -->
             <div class="card-footer clearfix">
               <div class="float-sm-left">
   	            {{ $posts->render() }}
               </div>
 	            <div class="float-sm-right">
-                <?php $postCount = $posts->count() ?>
 	            	{{ $postCount }} {{ str_plural('item', $postCount) }}
 	            </div>
 	          </div>
+            @endif
           </div>
         </div>
       </div>
@@ -83,4 +91,10 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+@endsection
+  <script>
+    $('ul.pagination').addClass('no-margin pagination-sm');
+  </script>
+@section('script')
+
 @endsection
