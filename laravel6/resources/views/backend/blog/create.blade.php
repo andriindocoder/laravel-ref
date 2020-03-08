@@ -30,7 +30,8 @@
             <div class="card-body">
               {!! Form::model($post, [
                 'method' => 'POST',
-                'route' => 'backend.blog.store'    
+                'route' => 'backend.blog.store',
+                'files' => TRUE   
               ])!!}
 
               <div class="form-group">
@@ -82,6 +83,15 @@
                 {!! Form::label('category_id', 'Category') !!}
                 {!! Form::select('category_id', App\Category::pluck('title', 'id'), null, ['class' => ($errors->has('category_id')) ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Choose Category']) !!}
                 @error('category_id')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
+              </div>
+              <div class="form-group">
+                {!! Form::label('image', 'Image') !!}
+                {!! Form::file('image') !!}
+                @error('image')
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div>

@@ -1,5 +1,10 @@
 @extends('layouts.dashboard-template')
 @section('content')
+<style>
+  nav.mt-4 {
+    margin-top: 0 !important;
+  }
+</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -95,9 +100,9 @@
 </div>
 <!-- /.content-wrapper -->
 @endsection
+@section('script')
   <script>
     $('ul.pagination').addClass('no-margin pagination-sm');
   </script>
-@section('script')
 
 @endsection
