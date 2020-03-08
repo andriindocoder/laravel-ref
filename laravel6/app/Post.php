@@ -50,4 +50,20 @@ class Post extends Model
 	public function category() {
 		return $this->belongsTo(Category::class);
 	}
+
+	public function dateFormatted($showTimes = false) {
+		$format = 'd/m/Y';
+		if($showTimes) $format = $format . " H:i:s";
+		return $this->created_at->format($format);
+	}
+
+	public function publicationLabel() {
+		if(!$this->published_at) {
+			return '<span class="badge badge-warning">Draft</span>';
+		}elseif($this->published_at && $this->published_at->isFuture()) {
+			return '<span class="badge badge-info">Scheduled</span>';
+		}else{
+			return '<span class="badge badge-success">Published</span>';
+		}
+	}
 }

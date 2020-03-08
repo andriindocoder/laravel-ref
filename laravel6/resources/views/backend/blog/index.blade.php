@@ -55,7 +55,10 @@
 	                    <td>{{ $post->title }}</td>
 	                    <td>{{ $post->author->name }}</td>
 	                    <td>{{ $post->category->title }}</td>
-	                    <td>{{ $post->created_at }}</td>
+	                    <td>
+                        <abbr title="{{ $post->dateFormatted(true) }}">{{ $post->dateFormatted() }}</abbr>
+                        {!! $post->publicationLabel() !!}
+                      </td>
 	                  </tr>
                   	@endforeach
                 </tbody>
@@ -63,15 +66,12 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer clearfix">
-	            <ul class="pagination pagination-sm m-0 float-left">
-	              <li class="page-item"><a class="page-link" href="#">«</a></li>
-	              <li class="page-item"><a class="page-link" href="#">1</a></li>
-	              <li class="page-item"><a class="page-link" href="#">2</a></li>
-	              <li class="page-item"><a class="page-link" href="#">3</a></li>
-	              <li class="page-item"><a class="page-link" href="#">»</a></li>
-	            </ul>
+              <div class="float-sm-left">
+  	            {{ $posts->render() }}
+              </div>
 	            <div class="float-sm-right">
-	            	4 items
+                <?php $postCount = $posts->count() ?>
+	            	{{ $postCount }} {{ str_plural('item', $postCount) }}
 	            </div>
 	          </div>
           </div>
