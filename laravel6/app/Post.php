@@ -19,9 +19,26 @@ class Post extends Model
 		$imageUrl = "";
 
 		if(! is_null($this->image)) {
-			$imagePath = public_path() . "/laravel_blog/img/" . $this->image;
+			$directory = config('cms.image.directory');
+			$imagePath = public_path() . "/laravel_blog/{$directory}/" . $this->image;
 			if(file_exists($imagePath)) {
-				$imageUrl = asset("laravel_blog/img/" . $this->image);
+				$imageUrl = asset("laravel_blog/{$directory}/" . $this->image);
+			}
+		}
+
+		return $imageUrl;
+	}
+
+	public function getImageThumbUrlAttribute($value) {
+		$imageUrl = "";
+
+		if(! is_null($this->image)) {
+			$directory = config('cms.image.directory');
+			$ext = substr(strrchr($this->image, '.'),1);
+			$thumbnail = str_replace(".{$ext}", "_thumb.{$ext}", $this->image);
+			$imagePath = public_path() . "/laravel_blog/{$directory}/" . $this->image;
+			if(file_exists($imagePath)) {
+				$imageUrl = asset("laravel_blog/{$directory}/" . $thumbnail);
 			}
 		}
 
