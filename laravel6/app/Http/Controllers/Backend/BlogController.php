@@ -27,7 +27,8 @@ class BlogController extends BackendController
      */
     public function create()
     {
-        dd("new blog post");
+        $post = new Post();
+        return view("backend.blog.create", compact('post'));
     }
 
     /**
