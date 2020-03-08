@@ -35,33 +35,63 @@
 
               <div class="form-group">
                 {!! Form::label('title') !!}
-                {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                {!! Form::text('title', null, ['class' => ($errors->has('title')) ? 'form-control is-invalid' : 'form-control']) !!}
+                @error('title')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
               </div>
               <div class="form-group">
                 {!! Form::label('slug') !!}
-                {!! Form::text('slug', null, ['class' => 'form-control']) !!}
+                {!! Form::text('slug', null, ['class' => ($errors->has('slug')) ? 'form-control is-invalid' : 'form-control']) !!}
+                @error('slug')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
               </div>
               <div class="form-group">
                 {!! Form::label('excerpt') !!}
-                {!! Form::textarea('excerpt', null, ['class' => 'form-control']) !!}
+                {!! Form::textarea('excerpt', null, ['class' => ($errors->has('excerpt')) ? 'form-control is-invalid' : 'form-control']) !!}
+                @error('excerpt')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
               </div>
               <div class="form-group">
                 {!! Form::label('body') !!}
-                {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+                {!! Form::textarea('body', null, ['class' => ($errors->has('body')) ? 'form-control is-invalid' : 'form-control']) !!}
+                @error('body')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
               </div>
               <div class="form-group">
                 {!! Form::label('published_at', 'Publication Date') !!}
-                {!! Form::text('published_at', null, ['class' => 'form-control']) !!}
+                {!! Form::text('published_at', null, ['class' => ($errors->has('published_at')) ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Y-m-d H:i:s']) !!}
+                  @error('published_at')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
               </div>
               <div class="form-group">
                 {!! Form::label('category_id', 'Category') !!}
-                {!! Form::select('category_id', App\Category::pluck('title', 'id'), null, ['class' => 'form-control', 'placeholder' => 'Choose Category']) !!}
+                {!! Form::select('category_id', App\Category::pluck('title', 'id'), null, ['class' => ($errors->has('category_id')) ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Choose Category']) !!}
+                @error('category_id')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
               </div>
-              {!! Form::close() !!}
 
               <hr>
 
               {!! Form::submit('Create new post', ['class' => 'btn btn-primary']) !!}
+              {!! Form::close() !!}
 
               {!! Form::close() !!}
 

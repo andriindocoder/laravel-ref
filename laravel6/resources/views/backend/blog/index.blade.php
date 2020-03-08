@@ -32,6 +32,9 @@
                 <a href="{{ route('backend.blog.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i> Add New</a>
               </div>
             </div>
+            @if ($message = session('message'))
+              <div class="alert alert-success">{{ $message }}</div> 
+            @endif
             <!-- /.card-header -->
             @if(!$posts->count())
             <div class="alert alert-danger" style="margin: 10px 15px;">
