@@ -7,3 +7,4 @@
 <script src="{{ asset('dashboard-asset/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dashboard-asset/dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('dashboard-asset/plugins/simplemde/dist/simplemde.min.js') }}"></script>
