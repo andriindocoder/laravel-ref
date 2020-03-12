@@ -72,7 +72,13 @@
               </div>
               <div class="form-group">
                 {!! Form::label('published_at', 'Publication Date') !!}
-                {!! Form::text('published_at', null, ['class' => ($errors->has('published_at')) ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Y-m-d H:i:s']) !!}
+                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                    {!! Form::text('published_at', null, ['class' => ($errors->has('published_at')) ? 'form-control datetimepicker-input is-invalid' : 'form-control datetimepicker-input ', 'placeholder' => 'Y-m-d H:i:s', 'data-target' => '#datetimepicker1']) !!}
+                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+                
                   @error('published_at')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -90,7 +96,18 @@
               </div>
               <div class="form-group">
                 {!! Form::label('image', 'Image') !!}
-                {!! Form::file('image') !!}
+                <br>
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                  <div class="fileinput-new img-thumbnail" style="width: 200px; height: 150px;">
+                    <img src="https://via.placeholder.com/200x150?text=No+Image"  alt="...">
+                  </div>
+                  <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                  <div>
+                    <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>{!! Form::file('image') !!}</span>
+                    <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+                  </div>
+                </div>
+
                 @error('image')
                 <div class="invalid-feedback">
                   {{ $message }}
@@ -133,5 +150,17 @@
 
     var simplemde1 = new SimpleMDE({ element: $("#excerpt")[0] })
     var simplemde2 = new SimpleMDE({ element: $("#body")[0] })
+
+    $('#datetimepicker1').datetimepicker({
+      format: 'YYYY-DD-MM HH:mm:ss',
+      buttons: {
+        showToday: true,
+        showClear: true,
+        showClose: true
+      },
+      icons: {
+        clear: 'fa fa-trash'
+      }
+    });
   </script>
 @endsection
