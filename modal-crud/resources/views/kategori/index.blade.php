@@ -50,7 +50,7 @@
                   <td>{{ $cat->description }}</td>
                   <td>
                   	<button class="btn btn-primary" data-mytitle="{{ $cat->title }}" data-description="{{ $cat->description }}" data-toggle="modal" data-target="#edit" data-catid="{{ $cat->id }}">Edit</button>
-                  	<button class="btn btn-danger">Delete</button>
+                  	<button class="btn btn-danger" data-toggle="modal" data-target="#delete" data-catid="{{ $cat->id }}">Delete</button>
                   </td>
                 </tr>
                 @endforeach
@@ -85,11 +85,11 @@
 	    </div>
 
 		<!-- Modal Edit-->
-        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="addNewTitle" aria-hidden="true">
+        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editCategory" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="addNewTitle">Edit Category</h5>
+                <h5 class="modal-title" id="editCategory">Edit Category</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -104,6 +104,32 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                   <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Update</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+		<!-- Modal Delete-->
+        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="deleteCategory" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-danger">
+              <div class="modal-header">
+                <h5 class="modal-title text-center" id="deleteCategory">Delete Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form action="{{ route('kategori.destroy', $cat->id) }}" method="post">
+              	@method('delete')
+              	@csrf
+                <div class="modal-body">
+                	<p class="text-center">Are you sure?</p>
+                  <input type="hidden" name="category_id" id="cat_id" value="">
+              	</div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fa fa-times"></i> No, Cancel</button>
+                  <button type="submit" class="btn btn-warning"><i class="fa fa-save"></i> Yes, Delete</button>
                 </div>
               </form>
             </div>

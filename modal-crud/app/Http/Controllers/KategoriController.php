@@ -64,8 +64,11 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $category = Category::findOrFail($request->category_id);
+        $category->delete();
+
+        return back();
     }
 }
