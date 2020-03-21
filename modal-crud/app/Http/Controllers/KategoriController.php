@@ -50,7 +50,7 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd('update');
     }
 
     /**
@@ -62,7 +62,7 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd("stop");
     }
 
     /**

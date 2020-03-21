@@ -23,7 +23,7 @@
 	<div class="content">
 	  <div class="container-fluid">
 	    <!-- Button trigger modal -->
-	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNew">
 	      <i class="fa fa-plus-circle"></i> Add New
 	    </button>
 
@@ -48,7 +48,10 @@
                   <td>{{ $cat->id }}</td>
                   <td>{{ $cat->title }}</td>
                   <td>{{ $cat->description }}</td>
-                  <td><span class="badge bg-danger">55%</span></td>
+                  <td>
+                  	<button class="btn btn-primary" data-mytitle="{{ $cat->title }}" data-description="{{ $cat->description }}" data-toggle="modal" data-target="#edit">Edit</button>
+                  	<button class="btn btn-danger">Delete</button>
+                  </td>
                 </tr>
                 @endforeach
               </tbody>
@@ -57,36 +60,53 @@
           <!-- /.card-body -->
         </div>
 
-	    <!-- Modal -->
-	    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	    <!-- Modal Add New-->
+	    <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewTitle" aria-hidden="true">
 	      <div class="modal-dialog modal-dialog-centered" role="document">
 	        <div class="modal-content">
 	          <div class="modal-header">
-	            <h5 class="modal-title" id="exampleModalCenterTitle">New Category</h5>
+	            <h5 class="modal-title" id="addNewTitle">New Category</h5>
 	            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	              <span aria-hidden="true">&times;</span>
 	            </button>
 	          </div>
 	          <form action="{{ route('kategori.store') }}" method="post">
 	          	@csrf
-		          <div class="modal-body">
-		            <div class="form-group">
-		            	<label for="title">Title</label>
-		            	<input type="text" class="form-control" name="title" id="title">
-		            </div>
-		            <div class="form-group">
-		            	<label for="des">Description</label>
-		            	<textarea cols="20" rows="5" class="form-control" name="description" id="des"></textarea>
-		            </div>
-		          </div>
-		          <div class="modal-footer">
-		            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-		            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-		          </div>
+	            <div class="modal-body">
+		          @include('kategori._form')
+	          	</div>
+	            <div class="modal-footer">
+	              <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+	              <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+	            </div>
 	          </form>
 	        </div>
 	      </div>
 	    </div>
+
+		<!-- Modal Edit-->
+        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="addNewTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addNewTitle">Edit Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form action="{{ route('kategori.update', $cat->id) }}" method="put">
+              	@csrf
+                <div class="modal-body">
+    	          @include('kategori._form')
+              	</div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Update</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
 	  </div><!-- /.container-fluid -->
 	</div>
 	<!-- /.content -->
