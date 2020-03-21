@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class KategoriController extends Controller
 {
@@ -12,8 +13,9 @@ class KategoriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('kategori.index');
+    {   
+        $categories = Category::all();
+        return view('kategori.index', compact('categories'));
     }
 
     /**
@@ -24,7 +26,9 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        Category::create($request->all());
+
+        return back();
     }
 
     /**

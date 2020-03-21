@@ -27,6 +27,36 @@
 	      <i class="fa fa-plus-circle"></i> Add New
 	    </button>
 
+	    <div class="card mt-3">
+          <div class="card-header">
+            <h3 class="card-title">All Categories</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body p-0">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              	@foreach($categories as $cat)
+                <tr>
+                  <td>{{ $cat->id }}</td>
+                  <td>{{ $cat->title }}</td>
+                  <td>{{ $cat->description }}</td>
+                  <td><span class="badge bg-danger">55%</span></td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+
 	    <!-- Modal -->
 	    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	      <div class="modal-dialog modal-dialog-centered" role="document">
