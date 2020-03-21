@@ -43,26 +43,19 @@ class KategoriController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        dd('update');
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        dd("stop");
+        $category = Category::findOrFail($request->category_id);
+
+        $category->update($request->all());
+        
+        return back();
     }
 
     /**

@@ -49,7 +49,7 @@
                   <td>{{ $cat->title }}</td>
                   <td>{{ $cat->description }}</td>
                   <td>
-                  	<button class="btn btn-primary" data-mytitle="{{ $cat->title }}" data-description="{{ $cat->description }}" data-toggle="modal" data-target="#edit">Edit</button>
+                  	<button class="btn btn-primary" data-mytitle="{{ $cat->title }}" data-description="{{ $cat->description }}" data-toggle="modal" data-target="#edit" data-catid="{{ $cat->id }}">Edit</button>
                   	<button class="btn btn-danger">Delete</button>
                   </td>
                 </tr>
@@ -94,9 +94,11 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <form action="{{ route('kategori.update', $cat->id) }}" method="put">
+              <form action="{{ route('kategori.update', $cat->id) }}" method="post">
+              	@method('PATCH')
               	@csrf
                 <div class="modal-body">
+                  <input type="hidden" name="category_id" id="cat_id">
     	          @include('kategori._form')
               	</div>
                 <div class="modal-footer">

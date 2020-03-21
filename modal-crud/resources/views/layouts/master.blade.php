@@ -116,9 +116,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     var button = $(event.relatedTarget)
     var title = button.data('mytitle') 
     var description = button.data('description')
+    var cat_id = button.data('catid')
     var modal = $(this)
     modal.find('.modal-body #title').val(title)
     modal.find('.modal-body #des').val(description)
+    modal.find('.modal-body #cat_id').val(cat_id)
   })
 </script>
 </body>
