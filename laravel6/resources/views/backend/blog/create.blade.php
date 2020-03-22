@@ -24,15 +24,17 @@
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
+      {!! Form::model($post, [
+        'method' => 'POST',
+        'route' => 'backend.blog.store',
+        'files' => TRUE,
+        'id' => 'post-form'
+      ])!!}
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-8">
           <div class="card">
             <div class="card-body">
-              {!! Form::model($post, [
-                'method' => 'POST',
-                'route' => 'backend.blog.store',
-                'files' => TRUE   
-              ])!!}
+              
 
               <div class="form-group">
                 {!! Form::label('title') !!}
@@ -70,63 +72,119 @@
                 </div>
                 @enderror
               </div>
-              <div class="form-group">
-                {!! Form::label('published_at', 'Publication Date') !!}
-                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                    {!! Form::text('published_at', null, ['class' => ($errors->has('published_at')) ? 'form-control datetimepicker-input is-invalid' : 'form-control datetimepicker-input ', 'placeholder' => 'Y-m-d H:i:s', 'data-target' => '#datetimepicker1']) !!}
-                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                    </div>
+              <hr>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Publish</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
                 </div>
-                
-                  @error('published_at')
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" style="display: block;">
+                <div class="form-group">
+                  {!! Form::label('published_at', 'Publication Date') !!}
+                  <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                      {!! Form::text('published_at', null, ['class' => ($errors->has('published_at')) ? 'form-control datetimepicker-input is-invalid' : 'form-control datetimepicker-input ', 'placeholder' => 'Y-m-d H:i:s', 'data-target' => '#datetimepicker1']) !!}
+                      <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
+                  </div>
+                  
+                    @error('published_at')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <div class="pull-left">
+                  <a id="draft-btn" class="btn btn-default">Save Draft</a>
+                </div>
+                <div class="pull-right">
+                  {!! Form::submit('Publish', ['class' => 'btn btn-primary']) !!}
+                </div>
+              </div>
+          </div>
+
+          <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Category</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" style="display: block;">
+                <div class="form-group">
+                  {!! Form::label('category_id', 'Category') !!}
+                  {!! Form::select('category_id', App\Category::pluck('title', 'id'), null, ['class' => ($errors->has('category_id')) ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Choose Category']) !!}
+                  @error('category_id')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default">Save Draft</a>
+                </div>
+                <div class="pull-right">
+                  {!! Form::submit('Publish', ['class' => 'btn btn-primary']) !!}
+                </div>
+                  {!! Form::close() !!}
+              </div>
+          </div>
+
+          <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Featured Image</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body text-center" style="display: block;">
+                  <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-new img-thumbnail" style="width: 200px; height: 150px;">
+                      <img src="https://via.placeholder.com/200x150?text=No+Image"  alt="...">
+                    </div>
+                    <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                    <div>
+                      <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>{!! Form::file('image') !!}</span>
+                      <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+                    </div>
+                  </div>
+
+                  @error('image')
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div>
                   @enderror
               </div>
-              <div class="form-group">
-                {!! Form::label('category_id', 'Category') !!}
-                {!! Form::select('category_id', App\Category::pluck('title', 'id'), null, ['class' => ($errors->has('category_id')) ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Choose Category']) !!}
-                @error('category_id')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-                @enderror
-              </div>
-              <div class="form-group">
-                {!! Form::label('image', 'Image') !!}
-                <br>
-                <div class="fileinput fileinput-new" data-provides="fileinput">
-                  <div class="fileinput-new img-thumbnail" style="width: 200px; height: 150px;">
-                    <img src="https://via.placeholder.com/200x150?text=No+Image"  alt="...">
-                  </div>
-                  <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-                  <div>
-                    <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>{!! Form::file('image') !!}</span>
-                    <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
-                  </div>
-                </div>
-
-                @error('image')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-                @enderror
-              </div>
-
-              <hr>
-
-              {!! Form::submit('Create new post', ['class' => 'btn btn-primary']) !!}
-              {!! Form::close() !!}
-
-              {!! Form::close() !!}
-
-            </div>
           </div>
         </div>
       </div>
       <!-- /.row -->
+      {!! Form::close() !!}
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content -->
@@ -161,6 +219,12 @@
       icons: {
         clear: 'fa fa-trash'
       }
+    });
+
+    $('#draft-btn').on('click', function(e) {
+      e.preventDefault();
+      $('#published_at').val("");
+      $('#post-form').submit();
     });
   </script>
 @endsection
