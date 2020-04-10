@@ -1,7 +1,7 @@
 <?php 
 return [
 	'image' => [
-		'directory' => 'img',
+		'directory' => 'laravel_blog/img',
 		'thumbnail' => [
 			'width' => 250,
 			'height' => 170,

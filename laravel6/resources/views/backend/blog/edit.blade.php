@@ -1,5 +1,5 @@
 @extends('layouts.dashboard-template')
-@section('title', 'Add New Post')
+@section('title', 'Edit Post')
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -8,7 +8,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Add New Blog</h1>
+          <h1 class="m-0 text-dark">Edit Post</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -25,8 +25,8 @@
   <div class="content">
     <div class="container-fluid">
       {!! Form::model($post, [
-        'method' => 'POST',
-        'route' => 'backend.blog.store',
+        'method' => 'PUT',
+        'route' => ['backend.blog.update', $post->id],
         'files' => TRUE,
         'id' => 'post-form'
       ])!!}

@@ -31,14 +31,14 @@ class Post extends Model
 
 	public function getImageThumbUrlAttribute($value) {
 		$imageUrl = "";
-
 		if(! is_null($this->image)) {
 			$directory = config('cms.image.directory');
 			$ext = substr(strrchr($this->image, '.'),1);
 			$thumbnail = str_replace(".{$ext}", "_thumb.{$ext}", $this->image);
-			$imagePath = public_path() . "/laravel_blog/{$directory}/" . $this->image;
+			$imagePath = public_path() . "/{$directory}/" . $this->image;
+
 			if(file_exists($imagePath)) {
-				$imageUrl = asset("laravel_blog/{$directory}/" . $thumbnail);
+				$imageUrl = asset("{$directory}/" . $thumbnail);
 			}
 		}
 
