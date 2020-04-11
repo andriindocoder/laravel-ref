@@ -71,6 +71,10 @@ Route::get('/blog/category/{category}', [
 
 /* Backend Blog */
 Route::name('backend.')->group(function () {
+	Route::put('/backend/blog/restore/{blog}', [
+		'uses' => 'Backend\BlogController@restore',
+		'as' => 'blog.restore'
+	]);
     Route::resource('/backend/blog', 'Backend\BlogController');
 });
 

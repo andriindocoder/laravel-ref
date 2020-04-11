@@ -37,9 +37,6 @@
                 <a href="{{ route('backend.blog.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i> Add New</a>
               </div>
             </div>
-            @if ($message = session('message'))
-              <div class="alert alert-success">{{ $message }}</div> 
-            @endif
             <!-- /.card-header -->
             @if(!$posts->count())
             <div class="alert alert-danger" style="margin: 10px 15px;">
@@ -49,6 +46,7 @@
               <div class="card-body p-0">
                 <table class="table table-striped">
                   <thead>
+                  @include('backend.blog.message')
                     <tr>
                       <th width="15%">Action</th>
                       <th>Title</th>
@@ -61,12 +59,14 @@
                     @foreach($posts as $post)
                       <tr>
                         <td>
+                          {!! Form::open(['method' => 'DELETE', 'route' => ['backend.blog.destroy', $post->id]]) !!}
                           <a href="{{ route('backend.blog.edit', $post->id) }}" class="btn btn-sm btn-primary">
                             <i class="fa fa-pencil-alt"></i>
                           </a>
-                          <a href="{{ route('backend.blog.destroy', $post->id) }}" class="btn btn-sm btn-danger">
+                          <button type="submit" class="btn btn-sm btn-danger">
                             <i class="fa fa-times"></i>
-                          </a>
+                          </button>
+                          {!! Form::close() !!}
                         </td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->author->name }}</td>
