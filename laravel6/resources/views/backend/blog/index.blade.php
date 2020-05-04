@@ -12,7 +12,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Blog Index</h1>
+          <h1 class="m-0 text-dark">Blog List</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -31,10 +31,13 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Blog List</h3>
-              <div class="float-right">
+            <div class="card-header clearfix">
+              <div class="float-left">
                 <a href="{{ route('backend.blog.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i> Add New</a>
+              </div>
+              <div class="float-right"> 
+                <a href="?status=all">All</a> | 
+                <a href="?status=trash">Trash</a>
               </div>
             </div>
             <!-- /.card-header -->
@@ -43,52 +46,11 @@
               No Record Found
             </div>
             @else
-              <div class="card-body p-0">
-                <table class="table table-striped">
-                  <thead>
-                  @include('backend.blog.message')
-                    <tr>
-                      <th width="15%">Action</th>
-                      <th>Title</th>
-                      <th>Author</th>
-                      <th>Category</th>
-                      <th>Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach($posts as $post)
-                      <tr>
-                        <td>
-                          {!! Form::open(['method' => 'DELETE', 'route' => ['backend.blog.destroy', $post->id]]) !!}
-                          <a href="{{ route('backend.blog.edit', $post->id) }}" class="btn btn-sm btn-primary">
-                            <i class="fa fa-pencil-alt"></i>
-                          </a>
-                          <button type="submit" class="btn btn-sm btn-danger">
-                            <i class="fa fa-times"></i>
-                          </button>
-                          {!! Form::close() !!}
-                        </td>
-                        <td>{{ $post->title }}</td>
-                        <td>{{ $post->author->name }}</td>
-                        <td>{{ $post->category->title }}</td>
-                        <td>
-                          <abbr title="{{ $post->dateFormatted(true) }}">{{ $post->dateFormatted() }}</abbr>
-                          {!! $post->publicationLabel() !!}
-                        </td>
-                      </tr>
-                      @endforeach
-                  </tbody>
-                </table>
-              </div>
-            <!-- /.card-body -->
-            <div class="card-footer clearfix">
-              <div class="float-sm-left">
-  	            {{ $posts->render() }}
-              </div>
-	            <div class="float-sm-right">
-	            	{{ $postCount }} {{ str_plural('item', $postCount) }}
-	            </div>
-	          </div>
+              @if($onlyTrashed)
+                @include('backend.blog.table-trash')
+              @else
+                @include('backend.blog.table')
+              @endif
             @endif
           </div>
         </div>
