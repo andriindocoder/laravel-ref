@@ -39,7 +39,7 @@
 <!-- /.card-body -->
 <div class="card-footer clearfix">
 <div class="float-sm-left">
-  {{ $posts->render() }}
+  {{ $posts->appends( Request::query() )->render() }}
 </div>
 <div class="float-sm-right">
   {{ $postCount }} {{ str_plural('item', $postCount) }}

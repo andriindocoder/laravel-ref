@@ -4,6 +4,9 @@
   nav.mt-4 {
     margin-top: 0 !important;
   }
+  a.selected-status {
+    font-weight: bold;
+  }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -35,9 +38,15 @@
               <div class="float-left">
                 <a href="{{ route('backend.blog.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i> Add New</a>
               </div>
-              <div class="float-right"> 
-                <a href="?status=all">All</a> | 
-                <a href="?status=trash">Trash</a>
+              <div class="float-right">
+                <?php $links = [] ;?> 
+                @foreach($statusList as $key => $value)
+                  @if($value)
+                    <?php $selected = Request::get('status') == $key ? 'selected-status' : '';?>
+                    <?php $links[] = "<a class=\"{$selected}\" href=\"?status={$key}\">".ucwords($key)."({$value})</a>";?>
+                  @endif
+                @endforeach
+                {!! implode(' | ', $links) !!}
               </div>
             </div>
             <!-- /.card-header -->
