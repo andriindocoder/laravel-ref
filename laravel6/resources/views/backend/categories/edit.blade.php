@@ -1,5 +1,5 @@
 @extends('layouts.dashboard-template')
-@section('title', 'Edit Post')
+@section('title', 'Edit Category')
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -8,12 +8,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Edit Post</h1>
+          <h1 class="m-0 text-dark">Edit Category</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active"><a href="{{ route('backend.blog.index') }}">Add New</a></li>
+            <li class="breadcrumb-item active"><a href="{{ route('backend.categories.index') }}">Edit</a></li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -24,14 +24,14 @@
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
-      {!! Form::model($post, [
+      {!! Form::model($category, [
         'method' => 'PUT',
-        'route' => ['backend.blog.update', $post->id],
+        'route' => ['backend.categories.update', $category->id],
         'files' => TRUE,
-        'id' => 'post-form'
+        'id' => 'category-form'
       ])!!}
       
-      @include('backend.blog.form')
+      @include('backend.categories.form')
 
       {!! Form::close() !!}
     </div><!-- /.container-fluid -->
@@ -41,4 +41,4 @@
 <!-- /.content-wrapper -->
 @endsection
 
-@include('backend.blog.script')
+@include('backend.categories.script')

@@ -1,5 +1,7 @@
 @if ($message = session('message'))
   <div class="alert alert-success">{{ $message }}</div> 
+@elseif ($message = session('error-message'))
+  <div class="alert alert-danger">{{ $message }}</div> 
 @elseif(session('trash-message'))
 		<?php list($message, $postId) = session('trash-message') ?>
 		{!! Form::open(['method' => 'PUT', 'route' => ['backend.blog.restore', $postId]]) !!}
