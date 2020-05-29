@@ -26,7 +26,7 @@
              with font-awesome or any other icon font library -->
         <li class="nav-item has-treeview menu-open">
           <a href="#" class="nav-link active">
-            <i class="nav-icon fa fa-pencil-alt"></i>
+            <i class="nav-icon fas fa-pencil-alt"></i>
             <p>
               Blog
               <i class="right fas fa-angle-left"></i>
@@ -48,11 +48,10 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{ route('backend.categories.index') }}" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
-              Simple Link
-              <span class="right badge badge-danger">New</span>
+              Categories
             </p>
           </a>
         </li>

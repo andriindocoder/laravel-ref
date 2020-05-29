@@ -1,7 +1,7 @@
 <div class="card-body p-0">
   <table class="table table-striped">
     <thead>
-    @include('backend.blog.message')
+    @include('backend.partials.message')
       <tr>
         <th width="15%">Action</th>
         <th>Title</th>

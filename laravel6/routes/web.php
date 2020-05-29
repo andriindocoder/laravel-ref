@@ -80,5 +80,6 @@ Route::name('backend.')->group(function () {
 		'as' => 'blog.force-destroy'
 	]);
     Route::resource('/backend/blog', 'Backend\BlogController');
+    Route::resource('/backend/categories', 'Backend\CategoryController');
 });
 
