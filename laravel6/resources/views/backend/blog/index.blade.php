@@ -1,5 +1,6 @@
 @extends('layouts.dashboard-template')
 @section('content')
+<!-- summernote -->
 <style>
   nav.mt-4 {
     margin-top: 0 !important;

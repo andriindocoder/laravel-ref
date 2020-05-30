@@ -69,17 +69,19 @@ Route::get('/blog/category/{category}', [
 	'as' => 'category'
 ]);
 
+
 /* Backend Blog */
 Route::name('backend.')->group(function () {
 	Route::put('/backend/blog/restore/{blog}', [
 		'uses' => 'Backend\BlogController@restore',
 		'as' => 'blog.restore'
-	]);
-	Route::delete('/backend/blog/force-destroy/{blog}', [
-		'uses' => 'Backend\BlogController@forceDestroy',
-		'as' => 'blog.force-destroy'
-	]);
-    Route::resource('/backend/blog', 'Backend\BlogController');
-    Route::resource('/backend/categories', 'Backend\CategoryController');
+		]);
+		Route::delete('/backend/blog/force-destroy/{blog}', [
+			'uses' => 'Backend\BlogController@forceDestroy',
+			'as' => 'blog.force-destroy'
+			]);
+			Route::resource('/backend/blog', 'Backend\BlogController');
+			Route::resource('/backend/categories', 'Backend\CategoryController');
+			Route::post('/backend/blog/editor-upload', 'Backend\BlogController@upload')->name('editor-upload');
 });
 

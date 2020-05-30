@@ -30,7 +30,6 @@
         'files' => TRUE,
         'id' => 'post-form'
       ])!!}
-      
       @include('backend.blog.form')
 
       {!! Form::close() !!}

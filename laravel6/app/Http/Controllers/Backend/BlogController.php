@@ -25,18 +25,19 @@ class BlogController extends BackendController
     {
         $onlyTrashed = false;
 
-        if(($status = $request->get('status')) && $status == 'trash') 
-        {
+        $status = $request->get('status');
+
+        if($status == 'trash') {
             $posts = Post::onlyTrashed()->with('category', 'author')->latest()->paginate($this->limit);
             $postCount = Post::onlyTrashed()->count();
             $onlyTrashed = true;
-        } elseif($status = 'published') {
-            $posts = Post::published()->with('category', 'author')->latest()->paginate($this->limit);
+        } else if($status = 'published') {
+            $posts = Post::with('category', 'author')->latest()->paginate($this->limit);
             $postCount = Post::published()->count();
-        } elseif($status = 'scheduled') {
+        } else if($status = 'scheduled') {
             $posts = Post::scheduled()->with('category', 'author')->latest()->paginate($this->limit);
             $postCount = Post::scheduled()->count();
-        } elseif($status = 'draft') {
+        } else if($status = 'draft') {
             $posts = Post::draft()->with('category', 'author')->latest()->paginate($this->limit);
             $postCount = Post::draft()->count();
         } else {
@@ -120,6 +121,26 @@ class BlogController extends BackendController
     public function show($id)
     {
         
+    }
+
+    public function upload(){
+        if(empty($_FILES['file']))
+{
+    exit();
+}
+$errorImgFile = "./img/img_upload_error.jpg";
+$temp = explode(".", $_FILES["file"]["name"]);
+
+$newfilename = round(microtime(true)) . '.' . end($temp);
+$destinationFilePath = './img-uploads/'.$newfilename ;
+// return $destinationFilePath;
+if(!move_uploaded_file($_FILES['file']['tmp_name'], $destinationFilePath)){
+    echo $errorImgFile;
+}
+else{
+    // echo $destinationFilePath;
+    echo 'http://laravel6.localserver/' . $destinationFilePath;//change this URL
+}
     }
 
     /**
