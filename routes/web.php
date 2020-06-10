@@ -22,16 +22,7 @@ $router->get('/fail', function() {
     return 'Not yet mature';
 });
 
-$router->get('/user/{id}', 'ExampleController@getUser');
-$router->get('/post/cat1/{cat1}/cat2/{cat2}', 'ExampleController@getPost');
-$router->get('/profile', ['as' => 'profile', 'uses' => 'ExampleController@getProfile']);
-$router->get('/profile/action', ['as' => 'profile.action', 'uses' =>  'ExampleController@getProfileAction']);
-
-$router->get('/foo/bar', 'ExampleController@fooBar');
-$router->get('/bar/foo', 'ExampleController@fooBar');
-$router->post('/user/profile/request', 'ExampleController@userProfile');
-
-$router->get('/response', 'ExampleController@response');
+$router->get('/user/{id}', 'UserController@show');
 
 $router->post('/register', 'AuthController@register');
 $router->post('/login', 'AuthController@login');
