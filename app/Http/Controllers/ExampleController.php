@@ -26,4 +26,12 @@ class ExampleController extends Controller
     public function getPost($cat1, $cat2) {
         return 'Category 1 : ' . $cat1 . ' Category 2 : ' . $cat2;
     }
+
+    public function getProfile() {
+        return 'Route Profile Action: ' . route('profile.action');
+    }
+
+    public function getProfileAction() {
+        return 'Router Profile: ' . route('profile');
+    }
 }
