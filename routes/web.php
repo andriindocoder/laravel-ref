@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Str;
-
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -19,14 +17,4 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/key', function() {
-    return Str::random(32);
-});
-
-$router->get('/admin/home', ['middleware' => 'age', function() {
-    return 'Old Enough';
-}]);
-
-$router->get('/fail', function() {
-    return 'Not yet mature';
-});
+$router->get('/key', 'ExampleController@generateKey');
