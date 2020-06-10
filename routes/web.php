@@ -23,32 +23,10 @@ $router->get('/key', function() {
     return Str::random(32);
 });
 
-$router->get('/user/{id}', function($id) {
-    return 'User ID : ' . $id;
-});
-
-$router->get('/post/{postId}/comments/{commentId}', function($postId, $commentId){
-    return 'Post ID : ' . $postId . ' Comment ID : ' . $commentId;
-});
-
-$router->get('/optional[/{param}]', function($param = null) {
-    return $param;
-});
-
-$router->get('profile', function() {
-    return redirect()->route('route.profile');
-});
-
-$router->get('profile/idstack', ['as' => 'route.profile', function() {
-    return 'Route IDStack';
+$router->get('/admin/home', ['middleware' => 'age', function() {
+    return 'Old Enough';
 }]);
 
-$router->group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => ''], function() use ($router) {
-    $router->get('home', function() {
-        return 'Home Admin';
-    });
-
-    $router->get('profile', function () {
-        return 'Profile Admin';
-    });
+$router->get('/fail', function() {
+    return 'Not yet mature';
 });
