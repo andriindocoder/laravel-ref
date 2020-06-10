@@ -34,3 +34,11 @@ $router->get('/post/{postId}/comments/{commentId}', function($postId, $commentId
 $router->get('/optional[/{param}]', function($param = null) {
     return $param;
 });
+
+$router->get('profile', function() {
+    return redirect()->route('route.profile');
+});
+
+$router->get('profile/idstack', ['as' => 'route.profile', function() {
+    return 'Route IDStack';
+}]);
