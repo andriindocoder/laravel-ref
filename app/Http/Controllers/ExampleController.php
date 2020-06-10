@@ -46,4 +46,28 @@ class ExampleController extends Controller
         return $request->path();
         return $request->method();
     }
+
+    public function userProfile(Request $requst){
+        $user['name'] = $request->name;
+        $user['username'] = $request->username;
+        $user['email'] = $request->email;
+
+        return $user;
+        return $request->all();
+        return $request->input('name', 'John Doe');
+        if($request->has(['name', 'email'])) {
+            return 'success';
+        } else {
+            return 'fail';
+        }
+
+        if($request->filled(['name', 'email'])) {
+            return 'success';
+        } else {
+            return 'fail';
+        }
+
+        return $request->only(['username', 'password']);
+        return $request->except(['username', 'password']);
+    }
 }
