@@ -42,3 +42,13 @@ $router->get('profile', function() {
 $router->get('profile/idstack', ['as' => 'route.profile', function() {
     return 'Route IDStack';
 }]);
+
+$router->group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => ''], function() use ($router) {
+    $router->get('home', function() {
+        return 'Home Admin';
+    });
+
+    $router->get('profile', function () {
+        return 'Profile Admin';
+    });
+});
