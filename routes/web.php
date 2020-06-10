@@ -18,6 +18,9 @@ $router->get('/', function () use ($router) {
 });
 
 $router->get('/key', 'ExampleController@generateKey');
+$router->get('/fail', function() {
+    return 'Not yet mature';
+});
 
 $router->get('/user/{id}', 'ExampleController@getUser');
 $router->get('/post/cat1/{cat1}/cat2/{cat2}', 'ExampleController@getPost');
