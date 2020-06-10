@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class ExampleController extends Controller
 {
@@ -13,7 +14,7 @@ class ExampleController extends Controller
     public function __construct()
     {
         // $this->middleware('age', ['only' => ['getUser']]);
-        $this->middleware('age', ['except' => ['getUser']]);
+        // $this->middleware('age', ['except' => ['getUser']]);
     }
 
     public function generateKey() {
@@ -34,5 +35,15 @@ class ExampleController extends Controller
 
     public function getProfileAction() {
         return 'Router Profile: ' . route('profile');
+    }
+
+    public function fooBar(Request $request) {
+        if($request->is('foo/bar')) {
+            return 'Success';
+        } else {
+            return 'Failed';
+        }
+        return $request->path();
+        return $request->method();
     }
 }
