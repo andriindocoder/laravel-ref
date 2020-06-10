@@ -23,10 +23,14 @@ $router->get('/key', function() {
     return Str::random(32);
 });
 
-$router->get('/foo', function() {
-    return 'Hello, GET Method';
+$router->get('/user/{id}', function($id) {
+    return 'User ID : ' . $id;
 });
 
-$router->post('/bar', function() {
-    return 'Hello, POST method';
+$router->get('/post/{postId}/comments/{commentId}', function($postId, $commentId){
+    return 'Post ID : ' . $postId . ' Comment ID : ' . $commentId;
+});
+
+$router->get('/optional[/{param}]', function($param = null) {
+    return $param;
 });
