@@ -1,4 +1,5 @@
 <div>
-	<input wire:model="name" type="text">
-    Hello {{ $name }}
+	Hello {{ $contact->name }}: {{ now() }}
+
+	<button wire:click="emitFoo">refresh</button>
 </div>

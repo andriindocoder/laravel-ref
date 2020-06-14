@@ -16,6 +16,11 @@ class HelloWorld extends Component
 		$this->name = $name;
 	}
 
+	public function refreshChildren()
+	{
+		$this->emit('refreshChildren');
+	}
+
 	public function updated()
 	{
 		$this->name = 'updated@';
