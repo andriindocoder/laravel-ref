@@ -38,4 +38,13 @@ class ContactIndex extends Component
     	$contact = Contact::findOrFail($id);
     	$this->emit('getContact', $contact);
     }
+
+    public function destroy($id)
+    {
+    	if($id) {
+    		$data = Contact::findOrFail($id);
+    		$data->delete();
+    		session()->flash('message', 'Contact berhasil dihapus');
+    	}
+    }
 }
