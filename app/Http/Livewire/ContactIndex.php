@@ -8,6 +8,8 @@ use App\Contact;
 class ContactIndex extends Component
 {
 
+	public $statusUpdate = false; 
+
 	protected $listeners = [
 		'contactStored' => 'handleStored'
 	];
@@ -19,8 +21,16 @@ class ContactIndex extends Component
         ]);
     }
 
-    public function handleStored($contact) {
+    public function handleStored($contact) 
+    {
     	// dd($contact);
     	session()->flash('message', 'Contact ' . $contact['name'] . ' berhasil disimpan.');
+    }
+
+    public function getContact($id)
+    {
+    	$this->statusUpdate = true;
+    	$contact = Contact::findOrFail($id);
+    	$this->emit('getContact', $contact);
     }
 }
