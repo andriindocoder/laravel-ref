@@ -7,22 +7,14 @@ use Illuminate\Http\Request;
 
 class HelloWorld extends Component
 {
-	public $name = 'Jelly';
+	public $names = ['Jelly', 'Man', 'Chico'];
 
-	// public function mount(Request $request, $name)
-	// {
-	// 	$this->name = $request->input('name', $name);
-	// }
+	public $contacts;
 
 	public function mount($name)
 	{
 		$this->name = $name;
 	}
-
-	// public function hydrate()
-	// {
-	// 	$this->name = 'hydrated@';
-	// }
 
 	public function updated()
 	{
@@ -37,5 +29,13 @@ class HelloWorld extends Component
     public function render()
     {
         return view('livewire.hello-world');
+    }
+
+    //$refresh
+
+    public function removeContact($name)
+    {
+    	Contact::whereName($name)->first()->delete();
+    	$this->contacts = Contact::all();
     }
 }

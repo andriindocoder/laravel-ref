@@ -1,6 +1,6 @@
 <div>
-
-    <input wire:model="name" type="text"> 
-
-	Hello {{ $name }}
+	@foreach($names as $name)
+		@livewire('say-hi', ['name' => $name], key($name))
+	@endforeach
 </div>
+
