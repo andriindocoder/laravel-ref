@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Contact;
 
 class ContactUpdate extends Component
 {
@@ -19,9 +20,34 @@ class ContactUpdate extends Component
         return view('livewire.contact-update');
     }
 
+    public function update() {
+    	$this->validate([
+    		'name' => 'required|min:3',
+    		'phone' => 'required|max:15'
+    	]);
+
+    	if($this->contactId) {
+    		$contact = Contact::findOrFail($this->contactId);
+    		$contact->update([
+    			'name' => $this->name,
+    			'phone' => $this->phone
+    		]);
+
+    		$this->resetInput();
+
+    		$this->emit('contactUpdated', $contact);
+    	}
+    }
+
     public function showContact($contact){
     	$this->name = $contact['name'];
     	$this->phone = $contact['phone'];
     	$this->contactId = $contact['id'];
+    }
+
+    private function resetInput()
+    {
+    	$this->name = null;
+    	$this->phone = null;
     }
 }
