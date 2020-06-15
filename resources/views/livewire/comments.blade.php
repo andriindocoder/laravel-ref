@@ -13,6 +13,7 @@
         <div class="flex justify-start my-2">
             <p class="font-bold text-lg">{{ $comment->creator->name }}</p>
             <p class="mx-3 py-1 text-xs text-gray-500 font-semibold">{{ $comment->created_at->diffForHumans() }}</p>
+        <i wire:click="remove({{ $comment->id }})" class="fas fa-times text-red-200 hover:text-red-600 cursor-pointer"></i>
         </div>
         <p class="text-gray-800">{{ $comment->body }}</p>
     </div>
