@@ -41,10 +41,10 @@
     	</thead>
     	<tbody>
     		<?php $no = 0;?>
-    		@foreach($contacts as $contact)
+    		@foreach($contacts as $index => $contact)
     		<?php $no++; ?>
     		<tr>
-    			<th scope="row">{{ $no }}</th>
+    			<th scope="row">{{ $index + $contacts->firstItem() }}</th>
     			<td>{{ $contact->name }}</td>
     			<td>{{ $contact->phone }}</td>
     			<td>
