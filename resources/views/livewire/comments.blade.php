@@ -1,6 +1,15 @@
 <div>
 	<h2>Comments</h2>
 	@error('newComment') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+	<br>
+	<div>
+		@if(session()->has('message'))
+		<div class="p-3 bg-green-300 text-green-800 rounded shadow-sm">
+			{{ session('message') }}
+		</div>
+		@endif
+	</div>
+
 	<form class="my-4 flex" wire:submit.prevent="addComment">
 		<input  wire:model.debounce.500ms="newComment" type="text" class="w-full rounded border shadow p-2 mr-2 my-2" placeholder="What's on your mind?">
 		<div class="py-2">
@@ -10,10 +19,12 @@
 
 	@foreach($comments as $comment)
     <div class="rounded border shadow p-3 my-2">
-        <div class="flex justify-start my-2">
-            <p class="font-bold text-lg">{{ $comment->creator->name }}</p>
-            <p class="mx-3 py-1 text-xs text-gray-500 font-semibold">{{ $comment->created_at->diffForHumans() }}</p>
-        <i wire:click="remove({{ $comment->id }})" class="fas fa-times text-red-200 hover:text-red-600 cursor-pointer"></i>
+        <div class="flex justify-between my-2">
+        	<div class="flex">
+	            <p class="font-bold text-lg">{{ $comment->creator->name }}</p>
+	            <p class="mx-3 py-1 text-xs text-gray-500 font-semibold">{{ $comment->created_at->diffForHumans() }}</p>
+        	</div>
+        	<i wire:click="remove({{ $comment->id }})" class="fas fa-times text-red-200 hover:text-red-600 cursor-pointer"></i>
         </div>
         <p class="text-gray-800">{{ $comment->body }}</p>
     </div>
