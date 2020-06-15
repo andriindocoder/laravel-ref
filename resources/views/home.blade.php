@@ -3,7 +3,7 @@
 @section('content')
     <div class="flex items-center">
         <div class="md:w-1/2 md:mx-auto">
-            <livewire:comments :initialComments="$comments" />
+            <livewire:comments />
         </div>
     </div>
 @endsection
