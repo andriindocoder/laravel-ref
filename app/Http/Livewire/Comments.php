@@ -7,15 +7,14 @@ use Carbon\Carbon;
 
 class Comments extends Component
 {
-	public $comments = [
-		[
-			'body' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, vitae, asperiores. Esse amet quibusdam adipisci omnis, molestias accusantium. Natus, non!',
-			'created_at' => '3 min ago',
-			'creator' => 'Sarthak'
-		]
-	];
+	public $comments;
 
 	public $newComment;
+
+	public function mount($initialComments)
+	{
+		$this->comments = $initialComments;
+	}
 
 	public function addComment()
 	{
