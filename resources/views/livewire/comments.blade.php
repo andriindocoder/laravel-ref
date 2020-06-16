@@ -1,5 +1,5 @@
 <div>
-	<h2>Comments</h2>
+	<h1 style="font-size: 28px;">Comments</h1>
 	@error('newComment') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
 	<br>
 	<div>

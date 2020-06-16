@@ -1,9 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex items-center">
-        <div class="md:w-1/2 md:mx-auto">
-            <livewire:comments />
+    <div class="flex justify-center">
+        <div class="w-10/12 my-10 flex">
+        	<div class="w-5/12 rounded border p-2">
+        		<livewire:tickets />
+        	</div>
+        	<div class="w-7/12 rounded border p-2">
+        		<livewire:comments />
+        	</div>
         </div>
     </div>
 @endsection
