@@ -6,8 +6,14 @@ use Livewire\Component;
 
 class Login extends Component
 {
+	public $form = [
+		'email' => '',
+		'password' => ''
+	];
+
     public function render()
     {
-        return view('livewire.login');
+        return view('livewire.login-tailwind');
+        // return view('livewire.login-bitfumes');
     }
 }
