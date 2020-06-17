@@ -7,7 +7,7 @@
                     {{ __('Register') }}
                 </div>
 
-                <form class="w-full p-6" method="POST" action="#">
+                <form class="w-full p-6" wire:submit.prevent="submit">
                     @csrf
 
                     <div class="flex flex-wrap mb-6">
@@ -15,9 +15,9 @@
                             {{ __('Name') }}:
                         </label>
 
-                        <input id="name" type="text" class="form-input w-full @error('name')  border-red-500 @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <input wire:model="form.name" id="name" type="text" class="form-input w-full @error('form.name')  border-red-500 @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
 
-                        @error('name')
+                        @error('form.name')
                             <p class="text-red-500 text-xs italic mt-4">
                                 {{ $message }}
                             </p>
@@ -29,9 +29,9 @@
                             {{ __('E-Mail Address') }}:
                         </label>
 
-                        <input id="email" type="email" class="form-input w-full @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        <input wire:model="form.email" id="email" type="email" class="form-input w-full @error('form.email') border-red-500 @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
 
-                        @error('email')
+                        @error('form.email')
                             <p class="text-red-500 text-xs italic mt-4">
                                 {{ $message }}
                             </p>
@@ -43,9 +43,9 @@
                             {{ __('Password') }}:
                         </label>
 
-                        <input id="password" type="password" class="form-input w-full @error('password') border-red-500 @enderror" name="password" required autocomplete="new-password">
+                        <input wire:model="form.password" id="password" type="password" class="form-input w-full @error('form.password') border-red-500 @enderror" name="password" autocomplete="new-password">
 
-                        @error('password')
+                        @error('form.password')
                             <p class="text-red-500 text-xs italic mt-4">
                                 {{ $message }}
                             </p>
@@ -57,7 +57,7 @@
                             {{ __('Confirm Password') }}:
                         </label>
 
-                        <input id="password-confirm" type="password" class="form-input w-full" name="password_confirmation" required autocomplete="new-password">
+                        <input wire:model="form.password_confirmation" id="password-confirm" type="password" class="form-input w-full" name="password_confirmation" autocomplete="new-password">
                     </div>
 
                     <div class="flex flex-wrap">
