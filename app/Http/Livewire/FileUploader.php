@@ -9,12 +9,12 @@ class FileUploader extends Component
 {
 	use WithFileUploads;
 
-	public $photo;
+	public $photos = [];
 
 	public function updatedPhoto()
 	{
 		$this->validate([
-			'photo' => 'image|max:1024'
+			'photos.*' => 'image|max:1024'
 		]);
 	}
 
@@ -24,7 +24,16 @@ class FileUploader extends Component
 			'photo' => 'image|max:1024' //1MB
 		]);
 
-		$this->photo->store('photos', 's3');
+		foreach($this->photos as $photo){
+			$photo->store('photos', 's3');
+		}
+
+		// $this->photo->store('photos', 's3');
+	}
+
+	public function remove($index)
+	{
+		array_splice($this->photos, $index, 1);
 	}
 
     public function render()
