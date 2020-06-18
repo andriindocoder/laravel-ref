@@ -21,7 +21,7 @@ class FileUploader extends Component
 	public function save() 
 	{
 		$this->validate([
-			'photo' => 'image|max:1024' //1MB
+			'photos.*' => 'image|max:1024' //1MB
 		]);
 
 		foreach($this->photos as $photo){
@@ -29,6 +29,8 @@ class FileUploader extends Component
 		}
 
 		// $this->photo->store('photos', 's3');
+		$this->photos = [];
+		session()->flash('message', 'File Uploaded!');
 	}
 
 	public function remove($index)

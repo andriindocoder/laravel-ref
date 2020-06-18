@@ -1,8 +1,13 @@
 <div class="w-full max-w-sm">
 	@error('photos') <span class="error">{{ $message }}</span> @enderror
 
-	<div wire:loading wire:target="photos">Uploading...</div>
-	<div wire:loading wire:target="save">Storing to S3...</div>
+{{-- 	<div wire:loading wire:target="photos">Uploading...</div>
+	<div wire:loading wire:target="save">Storing to S3...</div> --}}
+	@if(session()->has('message'))
+		<div class="p-2 bg-green-800 text-white my-10 rounded shadow">
+			{{ session('message') }}
+		</div>
+	@endif
 
 	<div
 		x-data="{ isUploading: false, progress: 0}"
@@ -25,7 +30,10 @@
 		</div>
 	</div>
 	@endforeach
-	<button wire:click.prevent="save" class="w-full p-2 text-white rounded shadow-lg" style="background-image: linear-gradient( 65.4deg, rgba(56,248,249,1) -9.1%, rgba(213,141,240,1) 48%, rgba(249,56,152,1) 111.1% );">Save</button>
+	<button wire:loading.remove wire:click.prevent="save" class="w-full p-2 text-white rounded shadow-lg" style="background-image: linear-gradient( 65.4deg, rgba(56,248,249,1) -9.1%, rgba(213,141,240,1) 48%, rgba(249,56,152,1) 111.1% );">Save</button>
+	<button wire:loading wire:target="save" class="w-full p-2 text-white rounded shadow-lg" style="background-image: linear-gradient( 65.4deg, rgba(56,248,249,1) -9.1%, rgba(213,141,240,1) 48%, rgba(249,56,152,1) 111.1% );">
+		<i class="fas fa-spinner fa-spin text-2x1"></i>
+	</button>
 	@endif
 	</div>
 </div>
