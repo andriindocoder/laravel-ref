@@ -26,8 +26,8 @@ class Cart
 	public function empty()
 	{
 		return [
-			'products' => [];
-		]
+			'products' => []
+		];
 	}
 
 	public function get()
