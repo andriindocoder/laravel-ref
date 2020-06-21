@@ -39,4 +39,13 @@ class Cart
 	{
 		session()->put('cart', $cart);
 	}
+
+	public function remove(int $productId)
+	{
+		$cart = $this->get();
+
+		array_splice($cart['products'], array_search($productId, array_column($cart['products'], 'id')),1);
+
+		$this->set($cart);
+	}
 }

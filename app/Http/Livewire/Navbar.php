@@ -10,7 +10,8 @@ class Navbar extends Component
 	public $cartTotal = 0;
 
 	protected $listeners = [
-		'cartAdded' => 'updateCartTotal'
+		'cartAdded' => 'updateCartTotal',
+		'productRemoved' => 'updateCartTotal'
 	];
 
 	public function mount()
