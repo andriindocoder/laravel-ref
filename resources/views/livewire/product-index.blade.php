@@ -8,7 +8,7 @@
 				<div class="card-header">{{ $product->name }}</div>
 				<div class="card-body">{{ $product->description }}</div>
 				<div class="card-footer">
-					<button class="btn btn-success">Add to Cart</button>
+					<button wire:click="addToCart($product->id)" class="btn btn-success">Add to Cart</button>
 				</div>
 			</div>
 		</div>

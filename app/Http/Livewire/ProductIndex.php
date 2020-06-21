@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Product;
 use Livewire\WithPagination;
+use App\Facades\Cart;
 
 class ProductIndex extends Component
 {
@@ -25,5 +26,10 @@ class ProductIndex extends Component
         return view('livewire.product-index', [
         	'products' => $products 
         ]);
+    }
+
+    public function addToCart(int $productId)
+    {
+    	Cart::add(Product::where('id', $productId)->first());
     }
 }
