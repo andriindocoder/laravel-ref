@@ -20,7 +20,7 @@
     		</div>
     		<div class="card-footer">
 	    		@if($cart['products'])
-	    			<button class="btn btn-success float-right">
+	    			<button wire:click="checkout" class="btn btn-success float-right">
 	    				Checkout
 	    			</button>
 	    		@endif

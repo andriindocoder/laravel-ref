@@ -35,6 +35,11 @@ class Cart
 		return session()->get('cart');
 	}
 
+	public function clear()
+	{
+		$this->set($this->empty());
+	}
+
 	public function set($cart)
 	{
 		session()->put('cart', $cart);

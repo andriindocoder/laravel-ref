@@ -25,4 +25,11 @@ class CartIndex extends Component
     	$this->cart = Cart::get();
     	$this->emit('productRemoved');
     }
+
+    public function checkout()
+    {
+    	Cart::clear();
+    	$this->emit('clearCart');
+    	$this->cart = Cart::get();
+    }
 }
