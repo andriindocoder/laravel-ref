@@ -8,6 +8,7 @@ use Tests\TestCase;
 use App\Book;
 use App\User;
 use App\Reservation;
+use Auth;
 
 class BookCheckoutTest extends TestCase
 {
@@ -69,6 +70,34 @@ class BookCheckoutTest extends TestCase
         $this->assertEquals(now(), Reservation::first()->checked_out_at);
         $this->assertEquals(now(), Reservation::first()->checked_in_at);
     }
+
+    /** @test */
+    public function only_signed_in_user_can_checkin_a_book()
+    {
+        // $this->withoutExceptionHandling();
+        $book = factory(Book::class)->create();
+        
+        $this->actingAs(factory(User::class)->create())
+            ->post('/checkout/' . $book->id);
+
+        Auth::logout();
+
+        $this->post('/checkin/' . $book->id)
+            ->assertRedirect('/login');
+
+        $this->assertCount(1, Reservation::all());
+        $this->assertNull(Reservation::first()->checked_in_at);
+    }
+
+    /** @test */
+    // public function only_real_books_can_be_checked_out()
+    // {        
+    //     $this->actingAs($user = factory(User::class)->create())
+    //         ->post('/checkout/123')
+    //         ->assertStatus(404);
+
+    //     $this->assertCount(0, Reservation::all());
+    // }
 
 }
 
