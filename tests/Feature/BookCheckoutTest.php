@@ -16,7 +16,6 @@ class BookCheckoutTest extends TestCase
     /** @test */
     public function a_book_can_be_checked_out_by_a_signed_in_user()
     {
-        $this->withoutExceptionHandling();
         $book = factory(Book::class)->create();
         
         $this->actingAs($user = factory(User::class)->create())
@@ -28,4 +27,29 @@ class BookCheckoutTest extends TestCase
         $this->assertEquals(now(), Reservation::first()->checked_out_at);
     }
 
+    /** @test */
+    public function only_signed_in_user_can_checkout_a_book()
+    {
+        // $this->withoutExceptionHandling();
+        $book = factory(Book::class)->create();
+        
+        $this->post('/checkout/' . $book->id)
+            ->assertRedirect('/login');
+
+        $this->assertCount(0, Reservation::all());
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
