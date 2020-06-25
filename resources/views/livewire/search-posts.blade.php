@@ -1,3 +1,3 @@
 <div>
-    {{-- Be like water. --}}
+    Search Post Component
 </div>

@@ -16,3 +16,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::livewire('/home', 'counter');
+Route::livewire('/home', 'counter')
+	->layout('layouts.base');
+
+// Customizing section (@yield('body'))
+Route::livewire('/home', 'counter')
+    ->section('body');
+
+// Passing parameters to the layout (Like native @extends('layouts.app', ['title' => 'foo']))
+Route::livewire('/home', 'counter')
+    ->layout('layouts.app', [
+        'title' => 'foo'
+    ]);
+
+Route::group(['layout' => 'layouts.base', 'section' => 'body'], function () {
+    //
+});
+
+Route::layout('layouts.base')->section('body')->group(function () {
+    //
+});
+
+Route::livewire('/contact/{id}', 'show-contact');
+// Route::livewire('/contact/{user}', 'show-contact');

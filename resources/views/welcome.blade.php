@@ -14,6 +14,11 @@
     <body>
         @livewire('counter')
 
+        <livewire:search-posts />
+        <livewire:post.search />
+
+        {{-- <livewire:show-contact :contact="$contact"> --}}
+
         <livewire:scripts>
     </body>
 </html>
