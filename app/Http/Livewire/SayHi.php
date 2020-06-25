@@ -11,11 +11,6 @@ class SayHi extends Component
 	// protected $listeners = ['refreshChildren' => 'refreshMe']
 	protected $listeners = ['foo' => '$refresh'];
 
-	public function emitFoo()
-	{
-		$this->emit
-	}
-
 	public function mount($name)
 	{
 		$this->name = $name;

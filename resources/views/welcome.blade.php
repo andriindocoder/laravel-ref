@@ -12,7 +12,7 @@
         
     </head>
     <body>
-        @livewire('hello-world', ['name' => 'Chico'])
+        @livewire('counter')
 
         @livewireScripts
     </body>
