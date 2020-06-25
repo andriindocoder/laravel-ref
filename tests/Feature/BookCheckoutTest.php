@@ -90,14 +90,19 @@ class BookCheckoutTest extends TestCase
     }
 
     /** @test */
-    // public function only_real_books_can_be_checked_out()
-    // {        
-    //     $this->actingAs($user = factory(User::class)->create())
-    //         ->post('/checkout/123')
-    //         ->assertStatus(404);
+    public function a_404_is_thrown_if_a_book_is_not_checked_out_first()
+    {        
+        $this->withoutExceptionHandling();
+        $book = factory(Book::class)->create();
 
-    //     $this->assertCount(0, Reservation::all());
-    // }
+        $user = factory(User::class)->create();
+        
+        $this->actingAs($user)
+            ->post('/checkin/' . $book->id)
+            ->assertStatus(404);
+
+        $this->assertCount(0, Reservation::all());
+    }
 
 }
 
