@@ -18,6 +18,7 @@
         <livewire:post.search />
 
         {{-- <livewire:show-contact :contact="$contact"> --}}
+        <livewire:hello-world />
 
         <livewire:scripts>
     </body>

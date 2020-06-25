@@ -1,6 +1,5 @@
 <div>
-	@foreach($names as $name)
-		@livewire('say-hi', ['name' => $name], key($name))
-	@endforeach
+	<input type="text" wire:model.lazy="message">
+	{{ $message }}
 </div>
 

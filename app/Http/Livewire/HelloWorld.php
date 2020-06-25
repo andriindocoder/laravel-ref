@@ -9,11 +9,15 @@ class HelloWorld extends Component
 {
 	public $names = ['Jelly', 'Man', 'Chico'];
 
+	public $message;
+
 	public $contacts;
 
-	public function mount($name)
+	public function mount()
 	{
-		$this->name = $name;
+		// $this->message = 'Hello Dolly';
+		$this->fill(['message' => 'Hello Fill']);
+		$this->reset();
 	}
 
 	public function refreshChildren()
