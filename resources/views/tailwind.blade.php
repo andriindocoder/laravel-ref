@@ -19,7 +19,8 @@
 					Workcation helps you find work-friendly rentals in beautiful locations so you can enjoy some nice weather even when you're not on vacation.
 				</p>
 				<div class="mt-4 sm:mt-6">
-					<a href="#" class="inline-block bg-indigo-500 text-sm text-white px-5 py-3 rounded-lg shadow-lg uppercase tracking-wider font-semibold sm:text-base">Book your escape</a>
+					<a href="#" class="btn btn-indigo sm:text-base shadow-lg">Book your escape</a>
+					<a href="#" class="ml-5 btn btn-gray sm:text-base">Learn More</a>
 				</div>
 			</div>
 		</div>
