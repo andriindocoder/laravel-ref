@@ -14,3 +14,8 @@
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+Broadcast::channel('post.{id}', function ($user, $id) {
+    return true; //Only user login has access
+    // return $user->id == \App\Post::find($id)->user_id; //Only author has access
+});
