@@ -12,6 +12,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { ApiService } from './Services/api.service';
+import { TokenService } from './Services/token.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ApiService } from './Services/api.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
