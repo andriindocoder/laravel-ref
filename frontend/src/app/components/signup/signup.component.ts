@@ -1,5 +1,7 @@
 import { Component,  OnInit } from '@angular/core';
 import { ApiService } from '../../Services/api.service';
+import { TokenService } from 'src/app/Services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +20,9 @@ export class SignupComponent implements OnInit {
   public error = [];
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private tokenService: TokenService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,9 +30,14 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     this.apiService.signup(this.form).subscribe( 
-        data => console.log(data),
+        data => this.handleResponse(data),
         error => this.handleError(error)
       );
+  }
+
+  handleResponse(data) {
+    this.tokenService.handle(data.access_token);
+    this.router.navigateByUrl('/profile');
   }
 
   handleError(error) {

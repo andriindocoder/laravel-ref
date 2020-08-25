@@ -13,6 +13,7 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { ApiService } from './Services/api.service';
 import { TokenService } from './Services/token.service';
+import { AuthService } from './Services/auth.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { TokenService } from './Services/token.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ApiService, TokenService],
+  providers: [ApiService, TokenService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
