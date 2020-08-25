@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component,  OnInit } from '@angular/core';
+import { ApiService } from '../../Services/api.service';
 
 @Component({
   selector: 'app-signup',
@@ -18,14 +18,14 @@ export class SignupComponent implements OnInit {
   public error = [];
 
   constructor(
-    private http: HttpClient
+    private apiService: ApiService
   ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    return this.http.post('http://localhost:8000/api/signup', this.form).subscribe( 
+    this.apiService.signup(this.form).subscribe( 
         data => console.log(data),
         error => this.handleError(error)
       );
