@@ -14,6 +14,8 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { ApiService } from './Services/api.service';
 import { TokenService } from './Services/token.service';
 import { AuthService } from './Services/auth.service';
+import { AfterLoginService } from './Services/after-login.service';
+import { BeforeLoginService } from './Services/before-login.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { AuthService } from './Services/auth.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ApiService, TokenService, AuthService],
+  providers: [ApiService, TokenService, AuthService, AfterLoginService, BeforeLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
