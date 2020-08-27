@@ -41,8 +41,8 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
     AuthService, 
     AfterLoginService, 
     BeforeLoginService,
-    { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
-    SnotifyService
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/Services/api.service';
-import { SnotifyModule } from 'ng-snotify';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-request-reset',
@@ -15,7 +15,7 @@ export class RequestResetComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private notify: SnotifyModule
+    private notifyService: SnotifyService
   ) { }
 
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class RequestResetComponent implements OnInit {
   onSubmit() {
     this.apiService.sendPasswordResetLink(this.form).subscribe(
       data => this.handleResponse(data),
-      error => this.notify.error(error.error.error)
+      error => this.notifyService.error(error.error.error)
     )
   }
 
