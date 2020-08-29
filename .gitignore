@@ -21,3 +21,4 @@ laravel6/storage
 laravel6/bootstrap/cache
 laravel6/resources/views
 public/css/main.css
+frontend/node_modules/
