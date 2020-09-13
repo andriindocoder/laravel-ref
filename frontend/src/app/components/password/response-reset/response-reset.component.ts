@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/Services/api.service';
 
 @Component({
@@ -18,7 +18,8 @@ export class ResponseResetComponent implements OnInit {
 
   constructor(
   	private route:ActivatedRoute,
-  	private service:ApiService
+  	private service:ApiService,
+    private router: Router,
   ) {
   	route.queryParams.subscribe(params => {
   		this.form.resetToken = params['token']
@@ -26,14 +27,14 @@ export class ResponseResetComponent implements OnInit {
   }
 
   onSubmit() {
-  	this.ApiService.changePassword(this.form).subscribe(
+  	this.service.changePassword(this.form).subscribe(
   		data => this.handleResponse(data),
   		error => this.handleError(error)
   	)
   }
 
   handleResponse(data) {
-
+    router.navigateByUrl('/login');
   }
 
   handleError(data) {
